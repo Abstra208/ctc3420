@@ -5,7 +5,7 @@ body{
     grid-template-rows: 10% 90%;
 }
 header{
-    position: absolute;
+    position: fixed;
     top: 0%;
     height: 100%;
 }
