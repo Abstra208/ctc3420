@@ -1,5 +1,5 @@
-const firebase = require('firebase/app');
-require('firebase/storage');
+import { initializeApp } from 'firebase/app';
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
@@ -11,17 +11,17 @@ const firebaseConfig = {
     measurementId: "G-27E2ZLHJW0"
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
 const telechargerBtn = document.getElementById("telecharger");
 telechargerBtn.addEventListener("click", () => {
-    const storageRef = firebase.storage().ref();
+    const storageRef = ref(storage, '/');
     const file = document.getElementById("monFichier").files[0];
 
     if (file) {
-        const fileRef = storageRef.child("chemin/vers/mon/fichier");
-        fileRef.put(file).then((snapshot) => {
-            console.log("Fichier téléchargé avec succès !");
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
         }).catch((error) => {
             console.error("Erreur lors du téléchargement :", error);
         });
