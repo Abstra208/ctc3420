@@ -17,8 +17,7 @@ header{
 }
 header img{
     max-width: 100%;
-    max-height: 10vh;
-    object-fit: contain;
+    height: 10vh;
 }
 main{
     background-color: #ffffff;
