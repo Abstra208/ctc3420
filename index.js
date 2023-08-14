@@ -17,7 +17,7 @@ telechargerBtn.addEventListener("click", () => {
     const file = document.getElementById("monFichier").files[0];
 
     if (file) {
-        const fileRef = storageRef.child("chemin/vers/mon/fichier");
+        const fileRef = storageRef.child("/");
         fileRef.put(file).then((snapshot) => {
             console.log("Fichier téléchargé avec succès !");
         }).catch((error) => {
