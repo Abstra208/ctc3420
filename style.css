@@ -1,3 +1,7 @@
+body{
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
 header{
     position: absolute;
     top: 0%;
