@@ -17,13 +17,6 @@ const imagesContainer = document.getElementById("imagesContainer");
 listAll(listRef)
     .then((res) => {
         res.items.forEach((itemRef) => {
-            const url = itemRef.getDownloadURL();
-
-            const imgElement = document.createElement("img");
-            imgElement.src = url;
-            imgElement.alt = itemRef.name;
-
-            imagesContainer.appendChild(imgElement);
             getDownloadURL(ref(storage, itemRef ))
                 .then((url) => {
                     const imgElement = document.createElement("img");
