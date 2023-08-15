@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getStorage, ref, uploadBytes, listAll } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
+import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
@@ -34,7 +34,7 @@ telechargerBtn.addEventListener("click", () => {
     }
 });
 
-const listRef = ref(storage, 'files/uid');
+const listRef = ref(storage, 'images');
 
 listAll(listRef)
     .then((res) => {
@@ -42,15 +42,17 @@ listAll(listRef)
 
         res.items.forEach(async (item) => {
             try {
-                const downloadURL = await item.getDownloadURL();
-                
-                // Créer une balise <img> avec le lien de téléchargement comme source
-                const imgElement = document.createElement("img");
-                imgElement.src = downloadURL;
-                imgElement.alt = item.name;
+                getDownloadURL(ref(storage, 'images'))
+                    .then((url) => {
+                        const imgElement = document.createElement("img");
+                        imgElement.src = url;
+                        imgElement.alt = item.name;
 
-                // Ajouter l'image à l'élément conteneur
-                imagesContainer.appendChild(imgElement);
+                        imagesContainer.appendChild(imgElement);
+                    })
+                    .catch((error) => {
+                        // Handle any errors
+                    });
             } catch (error) {
                 console.error("Erreur lors de l'obtention du lien :", error);
             }
