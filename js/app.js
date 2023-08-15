@@ -18,21 +18,17 @@ listAll(listRef)
         const imagesContainer = document.getElementById("imagesContainer"); // L'élément HTML où afficher les images
 
         res.items.forEach((itemRef) => {
-            try {
-                getDownloadURL(ref(storage, "images/" + itemRef ))
-                    .then((url) => {
-                        const imgElement = document.createElement("img");
-                        imgElement.src = url;
-                        imgElement.alt = item.name;
+            getDownloadURL(ref(storage, "images/" + itemRef ))
+                .then((url) => {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = url;
+                    imgElement.alt = item.name;
 
-                        imagesContainer.appendChild(imgElement);
-                    })
-                    .catch((error) => {
-                        console.error("Erreur lors de l'obtention du lien :", error);
-                    });
-            } catch (error) {
+                    imagesContainer.appendChild(imgElement);
+            })
+            .catch((error) => {
                 console.error("Erreur lors de l'obtention du lien :", error);
-            }
+            });
         });
     }).catch((error) => {
         console.error("Erreur lors de la récupération de la liste :", error);
