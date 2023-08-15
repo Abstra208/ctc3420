@@ -15,19 +15,19 @@ const storage = getStorage(firebaseApp);
 
 const telechargerBtn = document.getElementById("telecharger");
 telechargerBtn.addEventListener("click", () => {
-    const file_name = document.getElementById("file_name_input").value[0];
+    const file_name = document.getElementById("file_name_input").value;
     const storageRef = ref(storage, file_name);
     const file = document.getElementById("file").files[0];
 
     if (file) {
-        if (file_name) {
+        if (file_name == "") {
+            console.log("Aucun nom donne.")
+        } else {
             uploadBytes(storageRef, file).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             }).catch((error) => {
                 console.error("Erreur lors du téléchargement :", error);
             });
-        } else {
-            console.log("Aucun nom donne.")
         }
     } else {
         console.log("Aucun fichier sélectionné.");
