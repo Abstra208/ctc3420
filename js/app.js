@@ -1,5 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
+import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
