@@ -19,7 +19,7 @@ listAll(listRef)
         res.items.forEach((itemRef) => {
             console.error("reference",itemRef);
 
-            getDownloadURL(ref(storage, 'images/' + itemRef ))
+            getDownloadURL(ref(storage, 'images/' + itemRef.path_ ))
                 .then((url) => {
                     const imgElement = document.createElement("img");
                     imgElement.src = url;
