@@ -11,10 +11,10 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, 'images');
+const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("imagesContainer");
 
-listAll()
+listAll(listRef)
     .then((res) => {
         res.items.forEach((itemRef) => {
             console("reference",itemRef);
