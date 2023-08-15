@@ -34,7 +34,7 @@ telechargerBtn.addEventListener("click", () => {
     }
 });
 
-const listRef = ref(storage, 'files/uid');
+const listRef = ref(storage, 'files');
 
 listAll(listRef).then((result) => {
     const imagesContainer = document.getElementById("imagesContainer"); // L'élément HTML où afficher les images
