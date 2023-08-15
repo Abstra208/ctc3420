@@ -11,6 +11,7 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
+const listRef = ref(storage, 'images');
 
 listAll(listRef)
     .then((res) => {
@@ -57,3 +58,4 @@ telechargerBtn.addEventListener("click", () => {
         console.log("Aucun fichier sélectionné.");
     }
 });
+
