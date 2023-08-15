@@ -12,11 +12,10 @@ const firebaseApp = initializeApp({
 });
 const storage = getStorage(firebaseApp);
 const listRef = ref(storage, 'images');
+const imagesContainer = document.getElementById("imagesContainer");
 
-listAll(listRef)
+listAll()
     .then((res) => {
-        const imagesContainer = document.getElementById("imagesContainer");
-
         res.items.forEach((itemRef) => {
             console("reference",itemRef);
 
