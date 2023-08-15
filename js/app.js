@@ -14,6 +14,27 @@ const storage = getStorage(firebaseApp);
 const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("imagesContainer");
 
+function away(){
+    listAll(listRef)
+    .then((res) => {
+        res.items.forEach((itemRef) => {
+            getDownloadURL(ref(storage, itemRef ))
+                .then((url) => {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = url;
+                    imgElement.alt = itemRef.name;
+
+                    imagesContainer.appendChild(imgElement);
+                })
+                .catch((error) => {
+                    console.error("Erreur lors de l'obtention du lien :", error);
+                });
+        });
+    }).catch((error) => {
+        console.error("Erreur lors de la récupération de la liste :", error);
+});
+}
+
 listAll(listRef)
     .then((res) => {
         res.items.forEach((itemRef) => {
@@ -41,10 +62,11 @@ telechargerBtn.addEventListener("click", () => {
 
     if (file) {
         if (file_name == "") {
-            console.log("Aucun nom donne.")
+            console.log("Aucun nom donné.")
         } else {
             uploadBytes(storageRef, file).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
+                away();
             }).catch((error) => {
                 console.error("Erreur lors du téléchargement :", error);
             });
