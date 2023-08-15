@@ -15,7 +15,7 @@ const storage = getStorage(firebaseApp);
 
 const telechargerBtn = document.getElementById("telecharger");
 telechargerBtn.addEventListener("click", () => {
-    const storageRef = ref(storage, '/');
+    const storageRef = ref(storage, 'file.png');
     const file = document.getElementById("monFichier").files[0];
 
     if (file) {
