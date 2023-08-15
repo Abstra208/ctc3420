@@ -15,7 +15,10 @@ const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("imagesContainer");
 
 function away(){
-    listAll(listRef)
+while (imagesContainer.firstChild) {
+    imagesContainer.removeChild(imagesContainer.firstChild);
+}
+listAll(listRef)
     .then((res) => {
         res.items.forEach((itemRef) => {
             getDownloadURL(ref(storage, itemRef ))
