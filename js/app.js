@@ -11,14 +11,14 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, 'images/uid');
+const listRef = ref(storage, 'images');
 
 listAll(listRef)
     .then((res) => {
         const imagesContainer = document.getElementById("imagesContainer"); // L'élément HTML où afficher les images
 
         res.items.forEach((itemRef) => {
-            getDownloadURL(ref(storage, "images/" + itemRef ))
+            getDownloadURL(ref(storage, 'images/' + itemRef ))
                 .then((url) => {
                     const imgElement = document.createElement("img");
                     imgElement.src = url;
