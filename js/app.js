@@ -24,7 +24,7 @@ listAll(listRef)
             imgElement.alt = itemRef.name;
 
             imagesContainer.appendChild(imgElement);
-            getDownloadURL(ref(storage, 'images/' + itemRef.path_ ))
+            getDownloadURL(ref(storage, itemRef ))
                 .then((url) => {
                     const imgElement = document.createElement("img");
                     imgElement.src = url;
