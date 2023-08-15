@@ -51,7 +51,7 @@ listAll(listRef)
                         imagesContainer.appendChild(imgElement);
                     })
                     .catch((error) => {
-                        // Handle any errors
+                        console.error("Erreur lors de l'obtention du lien :", error);
                     });
             } catch (error) {
                 console.error("Erreur lors de l'obtention du lien :", error);
