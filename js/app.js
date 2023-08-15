@@ -11,7 +11,7 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, 'images');
+const listRef = ref(storage, 'images/uid');
 
 listAll(listRef)
     .then((res) => {
