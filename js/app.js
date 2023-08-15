@@ -42,7 +42,7 @@ listAll(listRef)
 
         res.items.forEach((itemRef) => {
             try {
-                getDownloadURL(ref(storage, 'images/${item}' ))
+                getDownloadURL(ref(storage, "images/" + itemRef ))
                     .then((url) => {
                         const imgElement = document.createElement("img");
                         imgElement.src = url;
