@@ -40,7 +40,7 @@ listAll(listRef)
     .then((res) => {
         const imagesContainer = document.getElementById("imagesContainer"); // L'élément HTML où afficher les images
 
-        res.items.forEach(async (item) => {
+        res.items.forEach((itemRef) => {
             try {
                 getDownloadURL(ref(storage, 'images/${item}' ))
                     .then((url) => {
