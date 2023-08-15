@@ -25,6 +25,7 @@ listAll(listRef)
                     imgElement.alt = item.name;
 
                     imagesContainer.appendChild(imgElement);
+                    imagesContainer.innerHTML(imgElement);
             })
             .catch((error) => {
                 console.error("Erreur lors de l'obtention du lien :", error);
