@@ -27,4 +27,9 @@ main{
     height: 90vh;
     background-color: #ffffff;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+main img{
+    width: 90vw;
 }
