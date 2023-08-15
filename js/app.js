@@ -20,12 +20,11 @@ listAll(listRef)
         res.items.forEach((itemRef) => {
             getDownloadURL(ref(storage, 'images/' + itemRef ))
                 .then((url) => {
-                    const imgElement = document.createElement("img");
+                    imgElement = document.createElement("img");
                     imgElement.src = url;
-                    imgElement.alt = item.name;
+                    imgElement.alt = itemRef.name;
 
                     imagesContainer.appendChild(imgElement);
-                    imagesContainer.innerHTML(imgElement);
             })
             .catch((error) => {
                 console.error("Erreur lors de l'obtention du lien :", error);
