@@ -18,7 +18,7 @@ listAll(listRef)
         const imagesContainer = document.getElementById("imagesContainer");
 
         res.items.forEach((itemRef) => {
-            console(itemRef);
+            console("reference",itemRef);
 
             getDownloadURL(ref(storage, 'images/' + itemRef ))
                 .then((url) => {
