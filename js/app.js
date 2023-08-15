@@ -15,12 +15,12 @@ const listRef = ref(storage, 'images');
 
 listAll(listRef)
     .then((res) => {
-        const imagesContainer = document.getElementById("imagesContainer"); // L'élément HTML où afficher les images
+        const imagesContainer = document.getElementById("imagesContainer");
 
         res.items.forEach((itemRef) => {
             getDownloadURL(ref(storage, 'images/' + itemRef ))
                 .then((url) => {
-                    imgElement = document.createElement("img");
+                    const imgElement = document.createElement("img");
                     imgElement.src = url;
                     imgElement.alt = itemRef.name;
 
