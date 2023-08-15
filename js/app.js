@@ -18,6 +18,8 @@ listAll(listRef)
         const imagesContainer = document.getElementById("imagesContainer");
 
         res.items.forEach((itemRef) => {
+            console(itemRef);
+
             getDownloadURL(ref(storage, 'images/' + itemRef ))
                 .then((url) => {
                     const imgElement = document.createElement("img");
