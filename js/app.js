@@ -1,5 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
 import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
@@ -37,25 +38,7 @@ listAll(listRef)
         console.error("Erreur lors de la récupération de la liste :", error);
 });
 }
-
-listAll(listRef)
-    .then((res) => {
-        res.items.forEach((itemRef) => {
-            getDownloadURL(ref(storage, itemRef ))
-                .then((url) => {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = url;
-                    imgElement.alt = itemRef.name;
-
-                    imagesContainer.appendChild(imgElement);
-                })
-                .catch((error) => {
-                    console.error("Erreur lors de l'obtention du lien :", error);
-                });
-        });
-    }).catch((error) => {
-        console.error("Erreur lors de la récupération de la liste :", error);
-});
+away()
 
 const telechargerBtn = document.getElementById("telecharger");
 telechargerBtn.addEventListener("click", () => {
@@ -79,3 +62,26 @@ telechargerBtn.addEventListener("click", () => {
     }
 });
 
+const googleAuthButton = document.getElementById("googleAuth");
+googleAuthButton.addEventListener("click", () => {
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+    });
+});
