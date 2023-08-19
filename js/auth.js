@@ -15,7 +15,7 @@ const auth = getAuth(firebaseApp);
 
 const googleAuthButton = document.getElementById("googleAuth");
 googleAuthButton.addEventListener("click", () => {
-    const provider = new auth.GoogleAuthProvider();
+    const provider = new GoogleAuthProvider(firebaseApp);
     signInWithPopup(auth, provider)
         .then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
