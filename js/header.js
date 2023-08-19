@@ -2,7 +2,7 @@ link = {
     "horaires": "",
     "nouveau": "",
 }
-links = [["/nouveau", "nouveau"], ["/", "accueil"]]
+links = [["/new", "nouveau"], ["/", "accueil"]]
 
 links.forEach(element => {
     if (element[0] == location.pathname) {
