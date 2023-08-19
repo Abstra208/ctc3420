@@ -49,17 +49,3 @@ main img{
     display: flex;
     flex-direction: column;
 }
-
-@media (orientation: landscape) {
-    #connection_popup{
-        width: 70%;
-        height: 50%;
-    }
-}
-
-@media (orientation: portrait) {
-    #connection_popup{
-        width: 50%;
-        height: 70%;
-    }
-}
