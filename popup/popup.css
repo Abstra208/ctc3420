@@ -44,10 +44,6 @@ button {
     margin: 10px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
 input {
     width: 100%;
     padding: 10px;
