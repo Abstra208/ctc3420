@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, setPersistence, signInWithRedirect, inMemoryPersistence } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
@@ -15,27 +15,36 @@ const auth = getAuth(firebaseApp);
 
 const googleAuthButton = document.getElementById("googleAuth");
 googleAuthButton.addEventListener("click", () => {
-    const provider = new GoogleAuthProvider(firebaseApp);
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            const userDisplayName = user.DisplayName;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-            console.log("Utilisateur connecté :", userDisplayName);
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-        });
+setPersistence(auth, inMemoryPersistence)
+    .then(() => {
+        const provider = new GoogleAuthProvider(firebaseApp);
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                const userDisplayName = user.DisplayName;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+                console.log("Utilisateur connecté :", userDisplayName);
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+        })
+    .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    });
 });
+
 
