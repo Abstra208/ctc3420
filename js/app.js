@@ -1,6 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
 import { getStorage, ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDZOojkQJf0PIXfYgMf6SdyurI22vEjnnk",
@@ -12,7 +11,6 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
-const auth = getAuth(firebaseApp);
 const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("imagesContainer");
 
@@ -61,28 +59,4 @@ telechargerBtn.addEventListener("click", () => {
     } else {
         console.log("Aucun fichier sélectionné.");
     }
-});
-
-const googleAuthButton = document.getElementById("googleAuth");
-googleAuthButton.addEventListener("click", () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-        });
 });
