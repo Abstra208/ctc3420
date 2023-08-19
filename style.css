@@ -49,3 +49,17 @@ main img{
     display: flex;
     flex-direction: column;
 }
+
+@media only screen and (orientation: landscape) {
+    #connection_popup{
+        width: 70%;
+        height: 50%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    #connection_popup{
+        width: 50%;
+        height: 70%;
+    }
+}
