@@ -25,6 +25,7 @@ googleAuthButton.addEventListener("click", () => {
             const user = result.user;
             // IdP data available using getAdditionalUserInfo(result)
             // ...
+            console.log("Utilisateur connecté :", user);
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
