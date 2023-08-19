@@ -23,7 +23,7 @@ googleAuthButton.addEventListener("click", () => {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-            const userDisplayName = user.DisplayName;
+            const userDisplayName = user.displayName;
             // IdP data available using getAdditionalUserInfo(result)
             // ...
             console.log("Utilisateur connecté :", userDisplayName);
