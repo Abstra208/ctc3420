@@ -55,7 +55,11 @@ input {
 #checkBoxConnection{
     display: flex;
     flex-direction: row;
-    font-size: 2vh;
+    height: min-content;
+}
+
+#checkBoxConnection h1{
+    font-size-adjust: inherit;
 }
 
 /* Media query pour centrer le contenu sur les écrans plus petits */
