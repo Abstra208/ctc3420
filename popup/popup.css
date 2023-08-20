@@ -55,6 +55,7 @@ input {
 #checkBoxConnection{
     display: flex;
     flex-direction: row;
+    font-size: 2vh;
 }
 
 /* Media query pour centrer le contenu sur les écrans plus petits */
