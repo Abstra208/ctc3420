@@ -52,6 +52,11 @@ input {
     border-radius: 3px;
 }
 
+#checkBoxConnection{
+    display: flex;
+    flex-direction: row;
+}
+
 /* Media query pour centrer le contenu sur les écrans plus petits */
 @media (max-width: 500px) {
     .popup-content {
