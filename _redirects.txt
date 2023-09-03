@@ -1,2 +1,3 @@
 / index.html 301
 /new /nouveau.html 301
+/horaires /horaires.html 301
