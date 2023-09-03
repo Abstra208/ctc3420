@@ -11,33 +11,6 @@ const firebaseApp = initializeApp({
     measurementId: "G-27E2ZLHJW0"    
 });
 const storage = getStorage(firebaseApp);
-const listRef = ref(storage, '');
-const imagesContainer = document.getElementById("imagesContainer");
-
-function away(){
-while (imagesContainer.firstChild) {
-    imagesContainer.removeChild(imagesContainer.firstChild);
-}
-listAll(listRef)
-    .then((res) => {
-        res.items.forEach((itemRef) => {
-            getDownloadURL(ref(storage, itemRef ))
-                .then((url) => {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = url;
-                    imgElement.alt = itemRef.name;
-
-                    imagesContainer.appendChild(imgElement);
-                })
-                .catch((error) => {
-                    console.error("Erreur lors de l'obtention du lien :", error);
-                });
-        });
-    }).catch((error) => {
-        console.error("Erreur lors de la récupération de la liste :", error);
-});
-}
-away()
 
 const telechargerBtn = document.getElementById("telecharger");
 telechargerBtn.addEventListener("click", () => {

@@ -14,7 +14,6 @@ const firebaseApp = initializeApp({
 const storage = getStorage(firebaseApp);
 const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("timeSheets_list");
-const BigPicture = document.getElementById("big_image_content");
 let srcImageCliquee = "";
 
 listAll(listRef)
