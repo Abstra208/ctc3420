@@ -15,6 +15,7 @@ const storage = getStorage(firebaseApp);
 const listRef = ref(storage, '');
 const imagesContainer = document.getElementById("timeSheets_list");
 let srcImageCliquee = "";
+let titleImageCliquee = "";
 
 listAll(listRef)
     .then((res) => {
@@ -38,7 +39,8 @@ listAll(listRef)
                     enfants.forEach(enfant => {
                         enfant.addEventListener('click', function() {
                           srcImageCliquee = this.querySelector('img').src; // Stocke le src de l'image cliquée
-                          afficherBigImageContent(srcImageCliquee); // Appelle la fonction pour afficher l'image cliquée
+                          titleImageCliquee = this.querySelector('h1').innerHTML;
+                          afficherBigImageContent(srcImageCliquee, titleImageCliquee); // Appelle la fonction pour afficher l'image cliquée
                         });
                       });                      
                 })
@@ -50,11 +52,13 @@ listAll(listRef)
         console.error("Erreur lors de la récupération de la liste :", error);
 });
 
-function afficherBigImageContent(imgUrl) {
+function afficherBigImageContent(imgUrl, imgTitle) {
     const bigImageContent = document.getElementById("big_image_content");
     const bigImage = document.getElementById("big_image");
+    const bigImageTitle = document.getElementById("big_image_title");
     bigImageContent.style.display = 'block';
     bigImage.src= imgUrl;
+    bigImageTitle.innerHTML = imgTitle;
 }
 
 document.getElementById("closeBigPicture").addEventListener('click', function() {
