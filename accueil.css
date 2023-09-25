@@ -66,3 +66,7 @@ header{
 #ConHeader h1{
     color: var(--mint);
 }
+
+#connection_popup{
+    display: none;
+}
