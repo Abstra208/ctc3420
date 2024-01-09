@@ -7,6 +7,8 @@ body{
     flex-direction: row;
     text-align: center;
     font-size: small;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 #timeSheets_list div{
