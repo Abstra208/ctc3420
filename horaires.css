@@ -47,6 +47,30 @@ body{
     bottom: 0%;
 }
 
+#big_image_groupe{
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+#big_image_groupe::before{
+    content: '';
+    background: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+}
+
 #closeBigPicture{
     position: absolute;
     top: 2%;
@@ -73,5 +97,9 @@ body{
 @media screen and (max-width: 720px) {
     #timeSheets_list {
         flex-direction: column;
+    }
+    #big_image_content img{
+        width: 100vw;
+        height: auto;
     }
 }
