@@ -1,14 +1,33 @@
+:root{
+    --main-color: #7A93AC;
+    --main-dark-color: #171A21;
+    --secondary-color: #92BCEA;
+    --secondary-dark-color: #617073;
+    --other-color: #AFB3F7;
+}
+
 body{
     margin: 0;
     padding: 0;
+    background-color: var(--main-color);
 }
+
 #timeSheets_list {
+    margin: 20px;
+    width: auto;
     display: flex;
     flex-direction: row;
     text-align: center;
     font-size: small;
     overflow-x: scroll;
     overflow-y: hidden;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+}
+
+#timeSheets_list::-webkit-scrollbar{
+    width: 0;
 }
 
 #timeSheets_list div{
@@ -25,7 +44,17 @@ body{
     bottom: 0%;
     width: 100%;
     z-index: 2;
-    background-color: rgba(99, 99, 148, 0.26);
+}
+
+#timeSheets_list div h1::before{
+    content: '';
+    position: absolute;
+    height: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    color: var(--secondary-dark-color);
 }
 
 #big_image_content{
